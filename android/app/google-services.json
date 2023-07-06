@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "356120501891",
+    "firebase_url": "https://neo-pon-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "neo-pon",
+    "storage_bucket": "neo-pon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356120501891:android:f215df8b22f342fde485b6",
+        "android_client_info": {
+          "package_name": "com.company.neo_pon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356120501891-1bjo3pmj9gqsc4tpfgfq47rqlcpr4ao0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfkR2gKHny-iN1n_1JDZOuOqnnWtyUuIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356120501891-1bjo3pmj9gqsc4tpfgfq47rqlcpr4ao0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
