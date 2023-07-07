@@ -1,21 +1,16 @@
-import 'dart:ui';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:neo_pon/layout.dart';
 import 'package:neo_pon/organizers/app_manager.dart';
 import 'package:neo_pon/organizers/party_manager.dart';
 import 'package:neo_pon/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'organizers/video_manager.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  DartPluginRegistrant.ensureInitialized();
+  //DartPluginRegistrant.ensureInitialized();
   FirebaseOptions options = const FirebaseOptions(
     apiKey: "AIzaSyDHAibWAkvNjg-zFeuB8AcAJ-kY-QchegY",
     authDomain: "neo-pon.firebaseapp.com",
