@@ -85,7 +85,7 @@ class _MomentPlayerState extends State<MomentPlayer> {
       );
     }
 
-    if (!pausedPlaying && controller!.value.isInitialized && !controller!.value.isPlaying) {
+    if (!pausedPlaying && !controller!.value.isPlaying) {
       controller!.play();
     }
 
