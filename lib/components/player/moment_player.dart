@@ -101,7 +101,17 @@ class _MomentPlayerState extends State<MomentPlayer> {
                     clipBehavior: Clip.none,
                     children: [
                       VideoPlayer(controller!, key: Key(widget.currentMoment.ID!),),
-
+                      if (pausedPlaying)
+                        Center(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(color: Theme.of(context).shadowColor)
+                              ]
+                            ),
+                            child: const Icon(Icons.play_arrow, size: 128,)),
+                        ),
                       GestureDetector(
                         onTap: () {
                           if (controller == null) return;
@@ -111,16 +121,6 @@ class _MomentPlayerState extends State<MomentPlayer> {
                             pausedPlaying = !pausedPlaying;
                           });
                         },
-                        child: pausedPlaying ? SizedBox() : Center(
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(color: Theme.of(context).shadowColor)
-                                  ]
-                              ),
-                              child: const Icon(Icons.play_arrow, size: 128,)),
-                        ),
                       ),
                     ],
                   ),
