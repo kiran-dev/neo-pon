@@ -89,44 +89,44 @@ class _MomentPlayerState extends State<MomentPlayer> {
       controller!.play();
     }
 
-    return GestureDetector(
-      onTap: () {
-        if (controller == null) return;
-        controller!.value.isPlaying
-            ? controller!.pause() : controller!.play();
-        setState(() {
-          pausedPlaying = !pausedPlaying;
-        });
-      },
-      child: Container(
-        color: Theme.of(context).canvasColor,
-        child: OrientationBuilder(
-            builder: (context, o) {
+    return Container(
+      color: Theme.of(context).canvasColor,
+      child: OrientationBuilder(
+          builder: (context, o) {
 
-              return Center(
-                  child: AspectRatio(
-                    aspectRatio: controller!.value.aspectRatio ?? 1,
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        VideoPlayer(controller!, key: Key(widget.currentMoment.ID!),),
-                        if (pausedPlaying)
-                          Center(
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    boxShadow: [
-                                      BoxShadow(color: Theme.of(context).shadowColor)
-                                    ]
-                                ),
-                                child: Icon(Icons.play_arrow, size: 128,)),
-                          ),
-                      ],
-                    ),
-                  )
-              );
-            }
-        ),
+            return Center(
+                child: AspectRatio(
+                  aspectRatio: controller!.value.aspectRatio ?? 1,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      VideoPlayer(controller!, key: Key(widget.currentMoment.ID!),),
+
+                      GestureDetector(
+                        onTap: () {
+                          if (controller == null) return;
+                          controller!.value.isPlaying
+                              ? controller!.pause() : controller!.play();
+                          setState(() {
+                            pausedPlaying = !pausedPlaying;
+                          });
+                        },
+                        child: pausedPlaying ? SizedBox() : Center(
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  boxShadow: [
+                                    BoxShadow(color: Theme.of(context).shadowColor)
+                                  ]
+                              ),
+                              child: const Icon(Icons.play_arrow, size: 128,)),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+            );
+          }
       ),
     );
 

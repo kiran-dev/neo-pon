@@ -144,10 +144,10 @@ class _MomentsScreenState extends State<MomentsScreen> {
     return GestureDetector(
       onTap: () {
         if (s is Moment) {
-          VideoPlayerController? existingCOntroller = videoManager.getMomentController(s.ID!);
-          if (existingCOntroller != null) {
-            existingCOntroller.play();
-          }
+          // VideoPlayerController? existingCOntroller = videoManager.getMomentController(s.ID!);
+          // if (existingCOntroller != null) {
+          //   existingCOntroller.play();
+          // }
           setState(() {
             playingMomentID = s.ID;
           });
