@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:neo_pon/components/player/moment_player.dart';
 import 'package:provider/provider.dart';
+import 'package:video_player/video_player.dart';
 
 import '../models/moment.dart';
 import '../models/save.dart';
 import '../models/snap.dart';
 import '../organizers/app_manager.dart';
+import '../organizers/video_manager.dart';
 
 
 enum DisplaySaves { ALL, MOMENT, SNAP }
@@ -101,6 +103,8 @@ class _MomentsScreenState extends State<MomentsScreen> {
   }
 
   Widget buildSaved(Save s) {
+    VideoManager videoManager = Provider.of<VideoManager>(context, listen: false);
+
     Widget detailsRow = Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -140,6 +144,10 @@ class _MomentsScreenState extends State<MomentsScreen> {
     return GestureDetector(
       onTap: () {
         if (s is Moment) {
+          VideoPlayerController? existingCOntroller = videoManager.getMomentController(s.ID!);
+          if (existingCOntroller != null) {
+            existingCOntroller.play();
+          }
           setState(() {
             playingMomentID = s.ID;
           });
@@ -182,7 +190,10 @@ class _MomentsScreenState extends State<MomentsScreen> {
                             BoxShadow(color: Theme.of(context).shadowColor)
                           ]
                         ),
-                          child: Icon(Icons.play_arrow, size: 128,)),
+                        child: Center(
+                            child: Icon(Icons.play_arrow, size: 128,)
+                        )
+                      ),
                     ),
                   if (playingMomentID == s.ID)
                     MomentPlayer(currentMoment: s),
