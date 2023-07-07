@@ -107,28 +107,28 @@ class PartyManager extends ChangeNotifier {
   }
 
   Future<void> addMember(String userID) async {
-    if (!inParty()) return;
+    if (membersRef == null) return;
     DatabaseReference newInviteRef = membersRef!.push();
     await newInviteRef.set(PartyMember.NewInvite(ID: userID).toJson());
   }
 
   Future<void> addMessage(ChatMessage message) async {
-    if (!inParty()) return;
+    if (messagesRef == null) return;
     DatabaseReference newMessageRef = messagesRef!.push();
     await newMessageRef.set(message.toJson());
   }
 
   Future<void> addAction(VideoAction action) async {
-    if (!inParty()) return;
+    if (actionsRef == null) return;
     DatabaseReference newActionRef = actionsRef!.push();
     await newActionRef.set(action.toJson());
   }
 
   void exitParty() {
     currentPartyRef = null;
-    messagesRef?.remove();
-    actionsRef?.remove();
-    membersRef?.remove();
+    messagesRef = null; // messagesRef?.remove();
+    actionsRef = null; // actionsRef?.remove();
+    membersRef = null; // membersRef?.remove();
     notifyListeners();
   }
 
