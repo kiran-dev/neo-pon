@@ -85,14 +85,15 @@ class _MomentPlayerState extends State<MomentPlayer> {
       );
     }
 
-    if (!pausedPlaying && !controller!.value.isPlaying) {
+    if (!pausedPlaying && controller!.value.isInitialized && !controller!.value.isPlaying) {
       controller!.play();
     }
 
     return GestureDetector(
       onTap: () {
         if (controller == null) return;
-        pausedPlaying ? controller!.play() : controller!.pause();
+        controller!.value.isPlaying
+            ? controller!.pause() : controller!.play();
         setState(() {
           pausedPlaying = !pausedPlaying;
         });
